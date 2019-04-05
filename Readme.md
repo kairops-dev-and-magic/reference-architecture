@@ -4,13 +4,20 @@
 This execution was tested over Ubuntu 16.04 host with the next binaries installed:
 
 Kubectl
+
 curl
 
 # Use Terraform  for create AKS + Helm
 
+
+Create worskpace
+
+$terraform workspace new test
+
 Execute Terraform
 
 $terraform apply
+
 
 
 # Get Credentials configuration for allow to Terraform use Azure Api  ( Pre Steps )
@@ -80,7 +87,7 @@ bash
 Copiar
 export KUBECONFIG=./kube_config-azure-aks-kairos-poc
 
-# Init backed config over azure
+# Init backend config over azure
 
 In terraform.tf uncomment lines and file must be edited the acces_key from storage account tfstakskairospoc created  ( one for environment )
 
