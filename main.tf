@@ -13,6 +13,12 @@ locals {
 resource "azurerm_resource_group" "aks-kairos-poc" {
   name     = "${var.project}"
   location = "${var.location}"
+
+      tags {
+        Name = "Terraform Azure resource group ${var.project}"
+        Terraform   = "true"
+        Environment = "${local.env}"    
+    }
 }
 
 resource "azurerm_log_analytics_workspace" "aks-kairos-poc" {
@@ -20,6 +26,13 @@ resource "azurerm_log_analytics_workspace" "aks-kairos-poc" {
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.aks-kairos-poc.name}"
     sku                 = "${var.log_analytics_workspace_sku}"
+
+      tags {
+        Name = "Terraform Azure log_analytics_workspace ${var.project}"
+        Terraform   = "true"
+        Environment = "${local.env}"    
+    }
+
 }
 
 resource "azurerm_log_analytics_solution" "aks-kairos-poc" {
@@ -74,8 +87,10 @@ resource "azurerm_kubernetes_cluster" "aks-kairos-poc" {
   }
 */
 
-    tags {
-        Environment = "${local.env}"
+      tags {
+        Name = "Terraform Azure Kubernetes Cluster ${var.project}"
+        Terraform   = "true"
+        Environment = "${local.env}"    
     }
 }
 
