@@ -8,7 +8,7 @@ variable "location" {
 
 
 variable "agent_count" {
-    default = 3
+    default = 2
 }
 
 # refer https://azure.microsoft.com/pricing/details/monitor/ for log analytics pricing 
